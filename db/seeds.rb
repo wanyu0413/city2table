@@ -5,3 +5,44 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+25.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.street_address,
+    speciality: Faker::Food.ethnic_category,
+    email: Faker::Internet.email
+  )
+end
+
+25.times do
+  Course.create(
+    category: Faker::Food.ethnic_category,
+    price: rand(5000..15_000),
+    name: Faker::Food.dish
+  )
+end
+
+25.times do
+  Booking.create(
+    category: Faker::Food.ethnic_category,
+    price: rand(5000..15_000),
+    name: Faker::Food.dish
+  )
+end
+
+25.times do
+  Booking.create(
+    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    status: ("Decline" || "Accept")
+  )
+end
+
+25.times do
+  Review.create(
+    rating: rand(0..5),
+    comments: Faker::Lorem.sentence
+  )
+end
