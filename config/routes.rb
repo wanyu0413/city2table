@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :update]
 end
 
-
 # /	GET	pages	home
 # /courses	GET	courses	index
 # /courses/id	GET	courses	show
