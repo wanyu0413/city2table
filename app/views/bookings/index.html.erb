@@ -1,6 +1,19 @@
-<h1>Here is the Booking Index</h1>
-<% @bookings.each do |booking| %>
-  <%= booking.start_time %>
-  <%= booking.end_time %>
-  <%= booking.status %>
-<% end %>
+  
+<div class="container mt-3">
+  <h1>Here is the Booking Index</h1>
+  <div class="cards">
+    <% @bookings.each do |booking| %>
+      <div class="card">
+        <div class="card">
+          <div>
+            <p><%= booking.start_time %></p>
+            <p><%= booking.course.name %></p>
+            <p><%= booking.user.first_name %></p>
+          </div>
+          <h2 class="card">¥<%= booking.course.price %></h2>
+        </div>
+        <%# <%= link_to '', booking_path(booking.id), class: 'card-trip-link' %>
+      </div>
+    <% end %>
+  </div>
+</div>
