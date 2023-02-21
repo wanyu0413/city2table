@@ -17,13 +17,17 @@ require 'faker'
   )
 end
 
-25.times do
-  Course.create(
+10.times do
+  course = Course.create(
     category: Faker::Food.ethnic_category,
     price: rand(5000..15_000),
     name: Faker::Food.dish,
     user: User.all.sample
   )
+
+  file = URI.open("https://source.unsplash.com/featured?#{course.name}")
+  course.photo.attach(io: file, filename: "#{course.name}.jpg")
+  course.save
 end
 
 25.times do
