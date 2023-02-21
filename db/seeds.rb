@@ -12,7 +12,8 @@ require 'faker'
     last_name: Faker::Name.last_name,
     address: Faker::Address.street_address,
     speciality: Faker::Food.ethnic_category,
-    email: Faker::Internet.email
+    email: Faker::Internet.email,
+    password: "123123"
   )
 end
 
@@ -20,15 +21,8 @@ end
   Course.create(
     category: Faker::Food.ethnic_category,
     price: rand(5000..15_000),
-    name: Faker::Food.dish
-  )
-end
-
-25.times do
-  Booking.create(
-    category: Faker::Food.ethnic_category,
-    price: rand(5000..15_000),
-    name: Faker::Food.dish
+    name: Faker::Food.dish,
+    user: User.all.sample
   )
 end
 
@@ -36,13 +30,15 @@ end
   Booking.create(
     start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    status: ("Decline" || "Accept")
+    status: ["pending", "accepted", "rejected"].sample,
+    course: Course.all.sample,
+    user: User.all.sample
   )
 end
 
-25.times do
-  Review.create(
-    rating: rand(0..5),
-    comments: Faker::Lorem.sentence
-  )
-end
+# 25.times do
+#   Review.create(
+#     rating: rand(0..5),
+#     comments: Faker::Lorem.sentence
+#   )
+# end
