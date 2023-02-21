@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :update]
 end
 
-
 # /	GET	pages	home
 # /courses	GET	courses	index
 # /courses/id	GET	courses	show
@@ -23,7 +22,3 @@ end
 # /courses	GET/POST	courses	new/create
 # /chef/bookings	GET	/chef/bookings	index
 # bookings/id	PATCH	bookings	update
-
-
-
-rails g controller courses show
