@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -25,4 +24,3 @@ end
 # /courses	GET/POST	courses	new/create
 # /chef/bookings	GET	/chef/bookings	index
 # bookings/id	PATCH	bookings	update
-
