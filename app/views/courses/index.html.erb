@@ -37,7 +37,7 @@
 <div class="cards">
   <% @courses.each do |course| %>
     <div class="card" style="width: 18rem;">
-      <%= cl_image_tag course.photo.attached? ? course.photo.key : "cld-sample-4", class:"card-img-top" %>
+      <img class="card-img-top" src=" <%= course.photo.attached? ? cl_image_path(course.photo.key) : "https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"%> " alt="">
       <div class="card-body">
         <h5 class="card-title"><%= course.category%></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
