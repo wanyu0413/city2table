@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     # skip_authorization
+    authorize @course
     @booking = Booking.new
   end
 end
