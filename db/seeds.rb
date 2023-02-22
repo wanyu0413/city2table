@@ -20,43 +20,44 @@ User.destroy_all
     password: "123123"
   )
 end
-picture = {
-  "Japanese" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962721/japanese_food_tvtw0z.jpg"],
-    ["Japanese"]
-    ],
-  "Italian" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962721/italian_food_ztqydo.jpg"],
-    ["italian"]
-    ],
-    "Thai" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676963203/Thai_food_gjsygs.jpg"],
-    ["Thai"]
-    ],
-    "French" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962721/french_food_naebnt.jpg"],
-    ["French"]
-    ],
-    "Vietnamese" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676963203/Vietnamese_food_vp5wtt.jpg"],
-    ["Vietnamese"]
-    ],
-    "Taiwanese" => [
-    ["https://res.cloudinary.com/dh7mp7shk/image/upload/v1676963203/Taiwanese_food_vrz5ei.jpg"],
-    ["Taiwanese"]
-    ],
-}
 
-picture.each do |category, info|
-  course = Course.new(
-    category:,
+courses = [
+  {
+    category: "Japanese",
+    image: "japanese_food.jpg"
+  },
+  {
+    category: "Italian",
+    image: "italian_food.jpg"
+  },
+  {
+    category: "Thai",
+    image: "Thai_food.jpg"
+  },
+  {
+    category: "French",
+    image: "french_food.jpg"
+  },
+  {
+    category: "Vietnamese",
+    image: "Vietnamese_food.jpg"
+  },
+  {
+    category: "Taiwanese",
+    image: "Taiwanese_food.jpg"
+  },
+]
+
+courses.each do |course|
+  new_course = Course.new(
+    category: course[:category],
     price: rand(5000..15_000),
-    name: info[1].sample,
+    name: course[:category],
     user: User.all.sample
   )
-  file = URI.open(info[0].sample)
-  course.photo.attach(io: file, filename: "#{course.name}.jpg")
-  course.save
+  file = File.open("app/assets/images/#{course[:image]}")
+  new_course.photo.attach(io: file, filename: "#{new_course.name}.jpg")
+  new_course.save!
 end
 
 # 10.times do
