@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to courses_path, class: "navbar-brand" do %>
       <%= image_tag "https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962889/Web_banner_fg0eoo.png" %>
     <% end %>
 
@@ -64,8 +64,9 @@
 
       <div class="col-12 col-lg-4">
         <div class="form shadow-lg p-3 mb-5 bg-body">
-          <%= simple_form_for @course do |f| %>
-            <%= f.input :name %>
+          <%= simple_form_for [@course, @booking] do |f| %>
+            <%= f.input :start_time, html5: true %>
+            <%= f.input :end_time, html5: true %>
             <%= f.submit 'Reserve', class: 'btn btn-danger mt-2 text-white' %>
           <% end %>
         </div>
