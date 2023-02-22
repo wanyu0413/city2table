@@ -35,9 +35,9 @@
 </div>
 
 <div class="container mt-4">
-  <h1>Romantic Dinner for 2</h1>
+  <h1><%= @course.name %></h1>
   <div class="container d-flex p-0">
-    <h3 class="me-4">5⭐️</h3><h3>Tokyo, Meguro-ku, Nakameguro</h3>
+    <h3 class="me-4">5⭐️</h3><h3><%= @course.user.address %></h3>
   </div>
 
   <div class="container">
@@ -64,9 +64,9 @@
 
       <div class="col-12 col-lg-4">
         <div class="form shadow-lg p-3 mb-5 bg-body">
+          <h3>￥<%= @course.price %></h3>
           <%= simple_form_for [@course, @booking] do |f| %>
             <%= f.input :start_time, html5: true %>
-            <%= f.input :end_time, html5: true %>
             <%= f.submit 'Reserve', class: 'btn btn-danger mt-2 text-white' %>
           <% end %>
         </div>
