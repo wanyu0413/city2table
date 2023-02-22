@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only:[:index, :show]
   def index
-    @courses = Course.all
+    @courses = policy_scope(Course)
   end
 
   def show
