@@ -1,31 +1,28 @@
 <div class="container mt-4">
   <h1><%= @course.name %></h1>
-  <h3 class="me-4"></h3><h3><%= @course.user.address %></h3>
+  <h3 class="me-4"></h3>
+  <h3><%= @course.user.address %></h3>
   <div class="">
-  <form class="star-rating">
-  <input type="radio" name="review[rating]" value="1" />
-  <input type="radio" name="review[rating]" value="2" />
-  <input type="radio" name="review[rating]" value="3" checked />
-  <input type="radio" name="review[rating]" value="4" />
-  <input type="radio" name="review[rating]" value="5" />
-</form>
-
-<!-- Next line isn't necessary if you already have Font Awesome 5 in your app -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <form class="star-rating mb-3">
+      <input type="radio" name="review[rating]" value="1" />
+      <input type="radio" name="review[rating]" value="2" />
+      <input type="radio" name="review[rating]" value="3" checked />
+      <input type="radio" name="review[rating]" value="4" />
+      <input type="radio" name="review[rating]" value="5" />
+    </form>
+    <!-- Next line isn't necessary if you already have Font Awesome 5 in your app -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   </div>
-
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-8">
-        <div class="cards">
+        <div class="cards w-25">
           <% @course.photos.each do |photo| %>
             <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
           <% end %>
-
         </div>
         <p class="mt-5"><%= @course.description %></p>
       </div>
-
       <div class="col-12 col-lg-4">
         <div class="form shadow-lg p-3 mb-5 bg-body">
           <h3>￥<%= @course.price %></h3>
@@ -37,5 +34,21 @@
       </div>
     </div>
   </div>
-
+  <div class="container">
+    <p><strong>Reviews</strong></p>
+    <ul class="list-group">
+      <% @course.reviews.each do |review| %>
+        <li class="list-group-item"><%= review.rating %></li>
+        <li class="list-group-item"><%= review.comments %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="container">
+    <h1>New review</h1>
+    <%= simple_form_for [@course, @review] do |f| %>
+      <%= f.input :rating %>
+      <%= f.input :comments %>
+      <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

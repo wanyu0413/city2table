@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: "courses#index"
   resources :courses, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
   namespace :chef do
     resources :bookings, only: [:index]
