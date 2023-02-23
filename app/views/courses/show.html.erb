@@ -67,6 +67,7 @@
           <h3>￥<%= @course.price %></h3>
           <%= simple_form_for [@course, @booking] do |f| %>
             <%= f.input :start_time, html5: true %>
+            <%= f.input :end_time, html5: true %>
             <%= f.submit 'Reserve', class: 'btn btn-danger mt-2 text-white' %>
           <% end %>
         </div>
