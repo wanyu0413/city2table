@@ -1,31 +1,43 @@
 <div class="container mt-4">
   <h1><%= @course.name %></h1>
-  <h3 class="me-4"></h3><h3><%= @course.user.address %></h3>
+  <h3 class="me-4"></h3>
+  <h3><%= @course.user.address %></h3>
   <div class="">
-  <form class="star-rating">
-  <input type="radio" name="review[rating]" value="1" />
-  <input type="radio" name="review[rating]" value="2" />
-  <input type="radio" name="review[rating]" value="3" checked />
-  <input type="radio" name="review[rating]" value="4" />
-  <input type="radio" name="review[rating]" value="5" />
-</form>
-
-<!-- Next line isn't necessary if you already have Font Awesome 5 in your app -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <form class="star-rating">
+      <input type="radio" name="review[rating]" value="1" />
+      <input type="radio" name="review[rating]" value="2" />
+      <input type="radio" name="review[rating]" value="3" checked />
+      <input type="radio" name="review[rating]" value="4" />
+      <input type="radio" name="review[rating]" value="5" />
+    </form>
   </div>
-
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-8">
-        <div class="cards">
-          <% @course.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-
+        <div id="carouselExampleIndicators" class="carousel slide mt-5">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <% @course.photos.each do |photo| %>
+              <div class="carousel-item active">
+                <%= cl_image_tag photo.key, height: 300, width: 400, class:"d-block w-100 image-cover"%>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
         <p class="mt-5"><%= @course.description %></p>
       </div>
-
       <div class="col-12 col-lg-4">
         <div class="form shadow-lg p-3 mb-5 bg-body">
           <h3>￥<%= @course.price %></h3>
@@ -37,5 +49,4 @@
       </div>
     </div>
   </div>
-
 </div>
