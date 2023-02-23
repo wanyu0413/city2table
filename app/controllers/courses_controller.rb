@@ -10,4 +10,9 @@ class CoursesController < ApplicationController
     authorize @course
     @booking = Booking.new
   end
+
+  def login
+    @courses = Course.new(course_params)
+    i
+  end
 end
