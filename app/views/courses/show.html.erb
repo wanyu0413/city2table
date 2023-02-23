@@ -1,9 +1,17 @@
-
-
 <div class="container mt-4">
   <h1><%= @course.name %></h1>
-  <div class="container d-flex p-0">
-    <h3 class="me-4">5⭐️</h3><h3><%= @course.user.address %></h3>
+  <h3 class="me-4"></h3><h3><%= @course.user.address %></h3>
+  <div class="">
+  <form class="star-rating">
+  <input type="radio" name="review[rating]" value="1" />
+  <input type="radio" name="review[rating]" value="2" />
+  <input type="radio" name="review[rating]" value="3" checked />
+  <input type="radio" name="review[rating]" value="4" />
+  <input type="radio" name="review[rating]" value="5" />
+</form>
+
+<!-- Next line isn't necessary if you already have Font Awesome 5 in your app -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   </div>
 
   <div class="container">
