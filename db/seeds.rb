@@ -24,27 +24,33 @@ end
 courses = [
   {
     category: "Japanese",
-    image: "japanese_food.jpg"
+    image: "japanese_food.jpg",
+    description:"The traditional cuisine of Japan is based on rice with miso soup and other dishes; there is an emphasis on seasonal ingredients. Side dishes often consist of fish, pickled vegetables, and vegetables cooked in broth. Seafood is common, often grilled, but also served raw as sashimi or in sushi."
   },
   {
     category: "Italian",
-    image: "italian_food.jpg"
+    image: "italian_food.jpg",
+    description:"The Mediterranean diet forms the basis of Italian cuisine, rich in pasta, fish, fruits and vegetables. Cheese, cold cuts and wine are central to Italian cuisine, and along with pizza and coffee (especially espresso) form part of Italian gastronomic culture. "
   },
   {
     category: "Thai",
-    image: "Thai_food.jpg"
+    image: "Thai_food.jpg",
+    description:"Thai cuisine is a simple yet clever combination of Eastern and Western influences harmoniously combined. There are many dishes with thick noodles, vegetables, lettuce, and chicken, lamb, shrimp, or beef. Some dishes are more rice geared or contain fruits such as pineapple or papaya. Sour, sweet, salty, bitter and spicy flavors work together to make each dish come alive.  "
   },
   {
     category: "French",
-    image: "french_food.jpg"
+    image: "french_food.jpg",
+    description:"French cuisine rely heavily on local products. Fresh apples, berries, leeks, mushrooms, various squash, and stone fruits are among the most commonly used products. Poultry, beef, lamb, and veal are readily available year-round. Game meat is especially popular and abundant during the hunting season that runs from early autumn to February. No matter the region, France has an abundance of artisanal cheese and wine. "
   },
   {
     category: "Vietnamese",
-    image: "Vietnamese_food.jpg"
+    image: "Vietnamese_food.jpg",
+    description:"Vietnamese cuisine is known for using fish sauce, soy sauce, rice, fresh fruits and vegetables and herbs and spices including lemon grass, lime and kaffir lime leaves. Throughout all regions of Vietnam, the emphasis is always on serving fresh vegetables and herbs as side dishes along with dipping sauce."
   },
   {
     category: "Taiwanese",
-    image: "Taiwanese_food.jpg"
+    image: "Taiwanese_food.jpg",
+    description:"Taiwanese cuisine features bold flavors and unique textures, drawing inspiration from various Chinese regional cuisines as well as Japanese and Southeast Asian influences. Popular dishes include beef noodle soup, oyster omelette, and stinky tofu."
   },
 ]
 
@@ -53,7 +59,8 @@ courses.each do |course|
     category: course[:category],
     price: rand(5000..15_000),
     name: course[:category],
-    user: User.all.sample
+    user: User.all.sample,
+    description: course[:description]
   )
   file = File.open("app/assets/images/#{course[:image]}")
   new_course.photo.attach(io: file, filename: "#{new_course.name}.jpg")
