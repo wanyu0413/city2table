@@ -10,6 +10,15 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
+      redirect_to chef_bookings_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
       redirect_to bookings_path
     else
       render "courses/show", status: :unprocessable_entity
