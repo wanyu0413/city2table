@@ -1,1 +1,33 @@
-<h1>This is the Chef Bookings Index</h1>
+<div class="container mt-3">
+  <h1>Here is the Chef Booking Index</h1>
+  <div class="cards">
+    <% @bookings.each do |booking| %>
+      <div class="card">
+        <div class="card">
+          <div class="card-product">
+            <div class="card-product-infos">
+              <h2> <%= booking.course.name %> </h2>
+              <p><%= booking.start_time %></p>
+              <p><%= booking.user.first_name %></p>
+              <p>¥<%= booking.course.price %></p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <% if booking.pending? %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+              <%= f.submit 'Accept', class: 'btn btn-info' %>
+            <% end %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+              <%= f.submit 'Reject', class: 'btn btn-light' %>
+            <% end %>
+          <% else %>
+            <p class='booking-tag'><%= booking.status %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
