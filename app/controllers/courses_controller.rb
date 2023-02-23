@@ -30,6 +30,6 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:category, :price, :name)
+    params.require(:course).permit(:category, :price, :name, photos: [])
   end
 end
