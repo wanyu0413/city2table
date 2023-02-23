@@ -1,43 +1,17 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to courses_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962889/Web_banner_fg0eoo.png" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Log In", "#", class: "btn btn-ghost" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Up", "#", class: "btn btn-ghost" %>
-          </li>
-          <li class="nav-item dropdown">
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <div class="container mt-4">
   <h1><%= @course.name %></h1>
-  <div class="container d-flex p-0">
-    <h3 class="me-4">5⭐️</h3><h3><%= @course.user.address %></h3>
+  <h3 class="me-4"></h3><h3><%= @course.user.address %></h3>
+  <div class="">
+  <form class="star-rating">
+  <input type="radio" name="review[rating]" value="1" />
+  <input type="radio" name="review[rating]" value="2" />
+  <input type="radio" name="review[rating]" value="3" checked />
+  <input type="radio" name="review[rating]" value="4" />
+  <input type="radio" name="review[rating]" value="5" />
+</form>
+
+<!-- Next line isn't necessary if you already have Font Awesome 5 in your app -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
   </div>
 
   <div class="container">

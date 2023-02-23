@@ -1,53 +1,27 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to courses_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/dh7mp7shk/image/upload/v1676962889/Web_banner_fg0eoo.png" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Log In", "#", class: "btn btn-ghost" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Up", "#", class: "btn btn-ghost" %>
-          </li>
-          <li class="nav-item dropdown">
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
-      </ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://expatexplore.com/blog/wp-content/uploads/2013/03/Group-dining_ExpatExplore_467823869.jpg);">
+      <div class="container">
+        <h1>City2table brings <strong>neighborhood courses</strong> <strong>to your table</strong>!</h1>
+        <p>Enjoy cuisine from all over the world.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <% @courses.first(6).each do |course| %>
+        <%= link_to course_path(course) do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= course.photo.attached? ? cl_image_path(course.photo.key) : "https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"%>);">
+            <h5 class="card-title"><%= course.category%></h5>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
-</div>
-
-<div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://expatexplore.com/blog/wp-content/uploads/2013/03/Group-dining_ExpatExplore_467823869.jpg);">
-  <div class="container">
-    <h1>City2table brings <strong>neighborhood courses</strong> <strong>to your table</strong>!</h1>
-    <p>Enjoy cuisine from all over the world.</p>
-  </div>
-</div>
-
-<div class="cards">
-  <% @courses.first(6).each do |course| %>
-    <%= link_to course_path(course) do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= course.photo.attached? ? cl_image_path(course.photo.key) : "https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"%>);">
-        <h5 class="card-title"><%= course.category%></h5>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-</div>
+</body>
+</html>
