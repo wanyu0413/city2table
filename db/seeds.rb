@@ -28,7 +28,7 @@ courses = [
   },
   {
     category: "Italian",
-    image: "italian_food.jpg"
+    image: "italian_food
   },
   {
     category: "Thai",
