@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
     # skip_authorization
     authorize @course
     @booking = Booking.new
+    @review = Review.new
   end
 
   def new
