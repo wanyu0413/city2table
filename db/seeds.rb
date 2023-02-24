@@ -5,22 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'yaml'
-require 'open-uri'
 require 'faker'
 Booking.destroy_all
 Course.destroy_all
 User.destroy_all
 
-addresses_url = 'https://gist.githubusercontent.com/trouni/599e03440e2552e803c54c62916f874c/raw/cc7aff8deeb27c3f22ee501b6723766a8cb68f2b/addresses.yml'
-serialized_addresses = URI.open(addresses_url).read
-addresses = YAML.load(serialized_addresses)
-
 25.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: addresses.sample.split(",")[-2..-1].join(", "),
+    address: Faker::Address.street_address,
     speciality: Faker::Food.ethnic_category,
     email: Faker::Internet.email,
     password: "123123"
@@ -57,6 +51,36 @@ courses = [
     category: "Taiwanese",
     image: "Taiwanese_food.jpg",
     description:"Taiwanese cuisine features bold flavors and unique textures, drawing inspiration from various Chinese regional cuisines as well as Japanese and Southeast Asian influences. Popular dishes include beef noodle soup, oyster omelette, and stinky tofu."
+  },
+  {
+    category: "Korean",
+    image: "korean_food.jpg",
+    description:"Korean cuisine stands out from other cuisines with the many side dishes (banchan) that are served during meals. The number of side dishes can range anywhere from 2 to 12, but everyday meals feature at least a few. When you eat at a Korean restaurant, your various side dishes will come to you before your meal in small bowls and can be anything from vegetables to meat to seafood prepared in any number of ways. Korean dishes are all served at the same time, so there are no separate courses like in Western cuisines."
+  },
+  {
+    category: "Indian",
+    image: "indian_food.jpg",
+    description:"The staple Indian foods are Rice, Wheat and Lentils. And no Indian dish is complete without spices. Indian food is a combination of all six tastes like sweet, sour, salty, bitter, spicy and astringent. In India different dishes are prepared for different festivals. Every festival tends to be complete only when special food associated with that festival is cooked on that day."
+  },
+  {
+    category: "German",
+    image: "german_food.jpg",
+    description:"German cuisine focus heavily on bread, potatoes, and meat, especially pork, as well as plenty of greens such as types of cabbage and kale. Cake, coffee, and beer are all highly popular elements of German cuisine too. Germans love their meats, especially roasts. Some of the most common traditional meat dishes include roasted pork hocks (Schweinshaxe), braised pork roast with cabbage (Schweinebraten und Kohl), and Sauerbraten. Another well-known traditional dish is schnitzel, a German way of preparing meat, usually cutlets."
+  },
+  {
+    category: "Spanish",
+    image: "spanish_food.jpg",
+    description:"Spanish cuisine reflects the principles of the Mediterranean diet, including lots of fresh fruits and vegetables, olive oil, nuts, seafood, and—of course—wine. Locally. It forms the base of many vegetable sauces (known in Spanish as sofritos).Herbs most commonly used include parsley, oregano, rosemary and thyme. The use of garlic has been noted as common in Spanish cooking. The most used meats in Spanish cuisine include chicken, pork, lamb and veal. Fish and seafood are also consumed on a regular basis. Tapas are snacks and appetizers commonly served with drinks in bars and cafes."
+  },
+  {
+    category: "Chinese",
+    image: "chinese_food.jpg",
+    description:"Chinese cuisine, rich and colorful, has diversified color, aromatic flavor, and excellent taste as its main features. With these three characteristics, it is not only tasty but also a work of art for people to appreciate.A typical Chinese meal will have two things - a carbohydrate or starch like noodles, rice or buns, and accompanying stir fries or dishes of veggies, fish and meat. They use a lot of fresh vegetables like mushroom, water chestnuts, bamboo and even tofu."
+  },
+  {
+    category: "Mexican",
+    image: "mexican_food.jpg",
+    description:"One of the world’s great cuisines, Mexican food is diverse, delicious, and profoundly omnivorous, both simple and sophisticated. Typical Mexican dishes are as basic as the ubiquitous quesadilla (a warm tortilla filled with melted cheese) or as elaborate as chicken served in mole negro (a Oaxacan sauce prepared with dozens of hand-ground ingredients). Food is essential to Mexican culture, and eating well is something enjoyed throughout Mexico, at every price point and in every type of establishment—from food stalls, bakeries, and markets to cafés, cantinas, and restaurants."
   },
 ]
 
