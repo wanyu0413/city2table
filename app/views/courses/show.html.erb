@@ -2,15 +2,6 @@
   <h1><%= @course.name %></h1>
   <h3 class="me-4"></h3>
   <h3><%= @course.user.address %></h3>
-  <div class="">
-    <form class="star-rating">
-      <input type="radio" name="review[rating]" value="1" />
-      <input type="radio" name="review[rating]" value="2" />
-      <input type="radio" name="review[rating]" value="3" checked />
-      <input type="radio" name="review[rating]" value="4" />
-      <input type="radio" name="review[rating]" value="5" />
-    </form>
-  </div>
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-8">
@@ -52,18 +43,19 @@
   <div class="container">
     <p><strong>Reviews</strong></p>
     <ul class="list-group">
-      <% @course.reviews.each do |review| %>
-        <li class="list-group-item"><%= review.rating %></li>
+      <% @course.reviews.order(created_at: :desc).each do |review| %>
+        <li class="list-group-item">
+          <div class="star-rating">
+            <% review.rating.times do |i| %>
+              <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
+            <% end %>
+          </div>
+        </li>
         <li class="list-group-item"><%= review.comments %></li>
       <% end %>
     </ul>
   </div>
   <div class="container">
-    <h1>New review</h1>
-    <%= simple_form_for [@course, @review] do |f| %>
-      <%= f.input :rating %>
-      <%= f.input :comments %>
-      <%= f.submit "Submit review", class: "btn btn-primary" %>
-    <% end %>
+    <%= render "reviews/new", course: @course, review: @review %>
   </div>
 </div>

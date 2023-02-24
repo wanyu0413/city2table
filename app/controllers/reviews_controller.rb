@@ -3,10 +3,12 @@ class ReviewsController < ApplicationController
     @course = Course.find(params[:course_id])
     @review = Review.new(review_params)
     @review.course = @course
+    @review.user = current_user
+    authorize @review
     if @review.save
       redirect_to course_path(@course)
     else
-      render new, status: :unprocessable_entity
+      render "courses/show", status: :unprocessable_entity
     end
   end
 
