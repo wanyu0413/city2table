@@ -1,0 +1,12 @@
+<div>
+  <h3>Leave a review</h3>
+  <%= simple_form_for [@course, @review] do |f| %>
+    <div class="star-rating">
+      <% 5.times do |i| %>
+        <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
+      <% end %>
+    </div>
+    <%= f.input :comments %>
+    <%= f.submit "Submit review", class: "btn btn-info" %>
+  <% end %>
+</div>
