@@ -88,6 +88,17 @@
   padding: 16px;
 }
 
+.card-review {
+  margin: 16px;
+  padding: 20px;
+  height: 200px;
+  width: 220px;
+  background-color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
