@@ -7,25 +7,26 @@
           <div class="card-booking-infos">
             <h2> <%= booking.course.name %> </h2>
             <p><%= booking.start_time %></p>
-            <p><%= booking.user.first_name %></p>
-            <p>¥<%= booking.course.price %></p>
-            <% if booking.pending? %>
-              <div class="div d-flex">
-                <%= simple_form_for booking do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                  <%= f.submit 'Accept', class: 'btn btn-info me-2' %>
-                <% end %>
-                <%= simple_form_for booking do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                  <%= f.submit 'Reject', class: 'btn btn-light' %>
-                <% end %>
-              </div>
-            <% else %>
-              <p class='booking-tag'><%= booking.status.capitalize %></p>
-            <% end %>
-          </div>
+            <p>Booked by: <%= booking.course.user.first_name %></p>
+            <%# <p><%= booking.user.first_name %></p>
+          <p>¥<%= booking.course.price %></p>
+          <% if booking.pending? %>
+            <div class="div d-flex">
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                <%= f.submit 'Accept', class: 'btn btn-info me-2' %>
+              <% end %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                <%= f.submit 'Reject', class: 'btn btn-light' %>
+              <% end %>
+            </div>
+          <% else %>
+            <p class='booking-tag'><%= booking.status.capitalize %></p>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 </div>
