@@ -16,7 +16,7 @@
     <div class="cards">
       <% @courses.each do |course| %>
         <%= link_to course_path(course) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= course.photo.attached? ? cl_image_path(course.photo.key) : "https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"%>);">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= course.photos.attached? ? cl_image_path(course.photos.first.key) : "https://images.unsplash.com/photo-1504937551116-cb8097e6f02a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"%>);">
             <h5 class="card-title"><%= course.category%></h5>
           </div>
         <% end %>

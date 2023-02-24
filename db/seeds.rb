@@ -5,16 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'yaml'
+require 'open-uri'
 require 'faker'
 Booking.destroy_all
 Course.destroy_all
 User.destroy_all
 
+
+addresses_url = 'https://gist.githubusercontent.com/trouni/599e03440e2552e803c54c62916f874c/raw/cc7aff8deeb27c3f22ee501b6723766a8cb68f2b/addresses.yml'
+serialized_addresses = URI.open(addresses_url).read
+addresses = YAML.load(serialized_addresses)
+
+
 25.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.street_address,
+    address: addresses.sample.split(",")[-2..-1].join(", "),
     speciality: Faker::Food.ethnic_category,
     email: Faker::Internet.email,
     password: "123123"
@@ -93,7 +101,7 @@ courses.each do |course|
     description: course[:description]
   )
   file = File.open("app/assets/images/#{course[:image]}")
-  new_course.photo.attach(io: file, filename: "#{new_course.name}.jpg")
+  new_course.photos.attach(io: file, filename: "#{new_course.name}.jpg")
   new_course.save!
 end
 
