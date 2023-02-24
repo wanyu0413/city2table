@@ -7,11 +7,11 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.course.user != user
   end
 
   def update?
-    true
-    # record.course.user == user
+    # true
+    record.course.user == user
   end
 end

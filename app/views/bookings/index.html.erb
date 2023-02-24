@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <h1>Here is the Booking Index</h1>
+  <h1>Your Reservations</h1>
   <div class="cards">
     <% @bookings.each do |booking| %>
       <div class="card">
@@ -9,7 +9,7 @@
             <div class="card-product-infos">
               <h2> <%= booking.course.name %> </h2>
               <p><%= booking.start_time %></p>
-              <p><%= booking.user.first_name %></p>
+              <p><%= booking.user.first_name.capitalize %></p>
               <p>¥<%= booking.course.price %></p>
               <p>Status: <%= booking.status.capitalize %></p>
             </div>

@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <h1>Here is the Chef Booking Index</h1>
+  <h1>Here is your list of bookings!</h1>
   <div class="cards">
     <% @bookings.each do |booking| %>
       <div class="card">
@@ -13,7 +13,7 @@
               <div class="div d-flex">
                 <%= simple_form_for booking do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                  <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  <%= f.submit 'Accept', class: 'btn btn-info me-2' %>
                 <% end %>
                 <%= simple_form_for booking do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
