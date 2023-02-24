@@ -41,19 +41,19 @@
     </div>
   </div>
   <div class="container">
-    <h3><strong>Reviews</strong></h3>
-    <ul class="list-group">
+    <p><strong>Reviews</strong></p>
+    <div class="d-flex">
       <% @course.reviews.order(created_at: :desc).each do |review| %>
-        <li class="list-group-item">
+        <div class="card-review">
           <div class="star-rating">
             <% review.rating.times do |i| %>
               <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
             <% end %>
+            <p class="mt-4"><%= review.comments %></p>
           </div>
-        </li>
-        <li class="list-group-item"><%= review.comments %></li>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 
   <div class="container">
