@@ -9,7 +9,7 @@
             <div class="card-product-infos">
               <h2> <%= booking.course.name %> </h2>
               <p><%= booking.start_time %></p>
-              <p><%= booking.user.first_name.capitalize %></p>
+              <p>Chef: <%= booking.user.first_name.capitalize %></p>
               <p>¥<%= booking.course.price %></p>
               <p>Status: <%= booking.status.capitalize %></p>
             </div>
