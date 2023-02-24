@@ -42,7 +42,7 @@
   </div>
   <div class="container">
     <p><strong>Reviews</strong></p>
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <% @course.reviews.order(created_at: :desc).each do |review| %>
         <div class="card-review">
           <div class="star-rating">
@@ -55,7 +55,6 @@
       <% end %>
     </div>
   </div>
-
   <div class="container">
     <%= render "reviews/new", course: @course, review: @review %>
   </div>
