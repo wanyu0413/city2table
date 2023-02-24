@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="container">
-    <p><strong>Reviews</strong></p>
+    <h3><strong>Reviews</strong></h3>
     <ul class="list-group">
       <% @course.reviews.each do |review| %>
         <li class="list-group-item"><%= review.rating %></li>
@@ -58,8 +58,8 @@
       <% end %>
     </ul>
   </div>
-  <div class="container">
-    <h1>New review</h1>
+  <div class="container mb-4">
+    <h5>Post a review</h5>
     <%= simple_form_for [@course, @review] do |f| %>
       <%= f.input :rating %>
       <%= f.input :comments %>
